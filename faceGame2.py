@@ -84,7 +84,7 @@ collision = True
 
 #Load the falling objects (obs)
 obs = []
-obs_count = 3       #Can be changed to increase difficulty
+obs_count = 1      #Can be changed to increase difficulty
 for i in range(obs_count):
     x = random.randrange(0 , 340)
     ob = Sprite(x, random.randrange(-150, -50), 0, random.randint(5, 10), 30, 30,(0,255,0))
