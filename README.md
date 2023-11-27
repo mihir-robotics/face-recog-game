@@ -1,20 +1,31 @@
-# Face Game OpenCV 
+# Face Recognition Game using OpenCV
 
-This program uses the DNN support provided by the cv2 module in python to track our face.
-The co - ordinates of the face are then sent to the game, and the player character moves accordingly.
+This program utilizes OpenCV's DNN (Deep Neural Network) module in Python to track faces. 
+The coordinates of the detected face are then sent to the game, allowing the player character to move accordingly.
 
-Inside the deploy.prototext.txt file is architecture of model, inside res10_300x300_ssd_iter_140000.caffemodel file are the weights for actual architecture model(layers).
+## Description
 
-Required Modules:
-OpenCV for Python
-NumPy 
-Pygame
-Argparse
+The project combines face detection using the DNN support provided by the `cv2` module in Python and integrates it with a game. It tracks the face in real-time and translates its coordinates into game movements, creating an interactive experience.
 
-Heres the command to run the code:
+## Project Components
 
+- **Model Architecture**: The `deploy.prototxt.txt` file contains the architecture of the model used for face detection.
+- **Model Weights**: The `res10_300x300_ssd_iter_140000.caffemodel` file holds the weights for the actual model layers.
+- **Required Modules**:
+  - OpenCV for Python
+  - NumPy
+  - Pygame
+  - Argparse
+
+## Repository Structure
+
+- `src/`: Contains the source code files.
+- `model/`: Includes files that contain model architecture, weights etc.
+- `assets/`: Contains PNG and related assets used by the game.
+
+## Usage
+
+To run the code, execute the `run.sh` file, or use the following command:
+
+```bash
 python faceGame2.py --prototxt deploy.prototxt.txt --model res10_300x300_ssd_iter_140000.caffemodel
-
-Here's a YouTube video to demonstrate how the code works.
-
-https://youtu.be/PgYPcLfHAvU
