@@ -19,7 +19,7 @@ The project combines face detection using the DNN support provided by the `cv2` 
 
 ## Repository Structure
 
-- `src/`: Contains the source code files.
+- `src/`: Contains the source code files (`main.py`, `face.py`, `game.py`).
 - `model/`: Includes files that contain model architecture, weights etc.
 - `assets/`: Contains PNG and related assets used by the game.
 
