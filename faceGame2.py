@@ -116,6 +116,7 @@ net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
 vs = VideoStream(src=0).start()
 time.sleep(2)
 
+# Main()
 while running:
     frame = vs.read()
     frame = imutils.resize(frame,width = SIDE, height = SIDE)
