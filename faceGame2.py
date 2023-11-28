@@ -144,7 +144,7 @@ while running:
 
     if not collision:
         player.x = SIDE - ((startX+10)*2)
-
+    
     
     for i in range(0,detections.shape[2]):
 
