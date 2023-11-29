@@ -75,7 +75,7 @@ def check_collision(player_x, player_y, player_width , player_height, car_x, car
 
 #Load the player sprite
 player = Sprite(175,475,0,0,70,131,WHITE)
-player.load_image("MihirGameCringe1.png")
+player.load_image("assets\MihirGameCringe1.png")
 screen.set_alpha(None)
 collision = True
 
