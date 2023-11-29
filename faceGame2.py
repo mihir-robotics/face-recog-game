@@ -1,4 +1,4 @@
-#Rewritten Version of Face Game
+# DELETE AFTER; DEFUNCT VERSION
 
 from imutils.video import VideoStream
 import imutils

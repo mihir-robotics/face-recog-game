@@ -22,10 +22,11 @@ The project combines face detection using the DNN support provided by the `cv2` 
 - `src/`: Contains the source code files (`main.py`, `face.py`, `game.py`).
 - `model/`: Includes files that contain model architecture, weights etc.
 - `assets/`: Contains PNG and related assets used by the game.
+- `game.sh`: Shell Script to run code using Command Line.
 
 ## Usage
 
-To run the code, execute the `run.sh` file, or use the following command:
+To run the code, execute the `game.sh` file, or use the following command:
 
 ```bash
 python faceGame2.py --prototxt deploy.prototxt.txt --model res10_300x300_ssd_iter_140000.caffemodel
