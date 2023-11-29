@@ -1,5 +1,9 @@
 # Main
-# NEEDS TO BE REFACTORED
+
+'''
+This should only contain the local imports (face, game).
+Everything in 'while STATE...' shouldbe converted into methods/routines in their own respective files.
+'''
 
 import face
 import game
@@ -8,7 +12,7 @@ from game import random as random
 # Main()
 def main():
     STATE = True
-    while STATE:
+    while STATE:    # too long.. convert this into just routine calls to imports instead of if, for etc.
         frame = face.vs.read()
         frame = face.imutils.resize(frame, width= game.SIDE, height = game.SIDE)
         # Convert frame to a blob
