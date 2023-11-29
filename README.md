@@ -29,4 +29,5 @@ The project combines face detection using the DNN support provided by the `cv2` 
 To run the code, execute the `game.sh` file, or use the following command to run the `main.py`:
 
 ```bash
+cd src
 python main.py
