@@ -3,6 +3,7 @@
 
 import face
 import game
+from game import random as random
 
 # Main()
 def main():
@@ -53,8 +54,47 @@ def main():
         
         face.cv2.imshow("Face", frame)
 
+        # Drawing Code 
+        game.screen.fill((0,0,0))
+        if not game.collision:
+            game.player.draw_image()
+            game.player.move_x()
+            game.player.check_out_of_screen()
 
-    #-------- LINE 167  --------#
+            # Check if objects move out of screen
+            for i in range(game.obs_count):
+                game.obs[i].draw_rect()
+                game.obs[i].y += 25
+                if game.obs[i].y > 500:
+                    game.score += 1
+                    game.obs[i].y = random.randrange(-150,-50)
+                    game.obs[i].x = random.randrange(0, 340)
+                    game.obs[i].dy = random.randint(4, 9)        
+
+            #
+            for i in range(game.obs_count):
+                if game.check_collision(game.player.x, game.player.y, 30, 30, game.obs[i].x, game.obs[i].y, game.obs[i].width, game.obs[i].height):
+                    game.collision = True
+                    game.pygame.mouse.set_visible(True)
+                    break
+            
+            # Draw the score
+            SCORESTRING = "Score: " + str(game.score)
+            txt_score = game.font_30.render(SCORESTRING, True, game.WHITE)
+            game.screen.blit(txt_score, [15,15])
+            game.pygame.display.update()
+
+        else:
+            game.main_menu()
+        
+        key = face.cv2.waitKey(1) & 0xFF
+        if key == ord("q"):
+            break
+        game.clock.tick(100)
+
+
+
+    #-------- LINE  --------#
     
     # Clean up
     cv2.destroyAllWindows()
