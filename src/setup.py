@@ -1,9 +1,10 @@
 # Simple code to find absolute paths of file w.r.t working dir.
 # Can be expanded to obtain game configuration as well
 
-# Import os for req. functions
+# Import OS for req. functions
 import os
 
+#
 def find_absolute_paths():
     '''
     Find absolute paths for specific files located within sub-folders.

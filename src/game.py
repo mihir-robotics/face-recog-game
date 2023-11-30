@@ -1,5 +1,5 @@
 # Pygame code
-# REFACTORED
+# REFACTOR this
 
 #import the setup file to get absolute paths for ASSETS
 import setup
