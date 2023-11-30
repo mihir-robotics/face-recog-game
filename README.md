@@ -12,10 +12,10 @@ The project combines face detection using the DNN support provided by the `cv2` 
 - **Model Architecture**: The `deploy.prototxt.txt` file contains the architecture of the model used for face detection.
 - **Model Weights**: The `res10_300x300_ssd_iter_140000.caffemodel` file holds the weights for the actual model layers.
 - **Required Modules**:
-  - OpenCV for Python
+  - OpenCV(cv2) for Python
   - NumPy
   - Pygame
-  - Argparse
+  - Imutils
 
 ## Repository Structure
 
@@ -29,5 +29,4 @@ The project combines face detection using the DNN support provided by the `cv2` 
 To run the code, execute the `game.sh` file, or use the following command to run the `main.py`:
 
 ```bash
-cd src
-python main.py
+python ".\src\main.py"
