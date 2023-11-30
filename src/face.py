@@ -8,11 +8,22 @@ import imutils
 import numpy as np
 import argparse , time , cv2
 
+state = True
+
 MODEL_PATH = setup.find_absolute_paths()[0]
 ARCHITECTURE_PATH = setup.find_absolute_paths()[1]
 
 # Loading the model (which I took from the internet)
-net = cv2.dnn.readNetFromCaffe(MODEL_PATH, ARCHITECTURE_PATH)
+while state:
+    try:
+        net = cv2.dnn.readNetFromCaffe(MODEL_PATH, ARCHITECTURE_PATH)
+        state = False
+        print('loaded model')
+    except Exception:
+        print('cannot find file')
+        pass
+
+#net = cv2.dnn.readNetFromCaffe(MODEL_PATH, ARCHITECTURE_PATH)
 
 #Initialise the Video Stream 
 vs = VideoStream(src=0).start()

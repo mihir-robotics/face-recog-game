@@ -79,9 +79,11 @@ def check_collision(player_x, player_y, player_width , player_height, car_x, car
 player = Sprite(175,475,0,0,70,131,WHITE)
 
 #
-PNG = setup.find_absolute_paths()[2]
-player.load_image(PNG)
-
+try:
+    PNG = setup.find_absolute_paths()[2]
+    player.load_image(PNG)
+except Exception:
+    pass
 screen.set_alpha(None)
 event = pygame.event.poll()
 collision = True

@@ -1,9 +1,4 @@
-# Execute the main.py script with arguments
-# Temp. bash file for ease of execution
-
-
+# Bash script to run game through CLI
 #!/bin/bash
-cd src
-
-# This line is causing issues, cannot access model files when running this, through VSCode runs fine
-python main.py
+# Execute main.py
+python ".\src\main.py"
