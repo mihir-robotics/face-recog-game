@@ -11,8 +11,8 @@ from game import random as random
 
 # Main()
 def main():
-    STATE = True
-    while STATE:    # too long.. convert this into just routine calls to imports instead of if, for etc.
+    game.STATE = True
+    while game.STATE:    # too long.. convert this into just routine calls to imports instead of if, for etc.
         frame = face.vs.read()
         frame = face.imutils.resize(frame, width= game.SIDE, height = game.SIDE)
         # Convert frame to a blob
@@ -26,11 +26,12 @@ def main():
         if event.type == game.pygame.QUIT:
             STATE = False
 
+        # Start the game
         if game.collision and event.type == game.pygame.MOUSEBUTTONDOWN:
             game.collision = False
             for i in range(game.obs_count):
-                game.obs[i].y = random.randrange(-150,50)
-                game.obs[i].x = random.randrange(0,350)
+                game.obs[i].y = game.random.randrange(-150,50)
+                game.obs[i].x = game.random.randrange(0,350)
             game.player.x = 175
             game.player.dx = 0
             game.score = 0
@@ -101,8 +102,7 @@ def main():
     #-------- LINE  --------#
     
     # Clean up
-    cv2.destroyAllWindows()
-    vs.stop()
+    face.cleanup()
 
 
 if __name__ == "__main__":

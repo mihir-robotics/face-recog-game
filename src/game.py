@@ -1,6 +1,8 @@
 # Pygame code
 # REFACTORED
 
+#import the setup file to get absolute paths for ASSETS
+import setup
 import pygame , random
 from pygame.locals import *
 
@@ -8,7 +10,7 @@ from pygame.locals import *
 
 pygame.init()
 SIDE = 400
-running = True
+STATE = True
 
 clock = pygame.time.Clock()
 
@@ -75,9 +77,15 @@ def check_collision(player_x, player_y, player_width , player_height, car_x, car
 
 #Load the player sprite
 player = Sprite(175,475,0,0,70,131,WHITE)
-player.load_image("assets\MihirGameCringe1.png")
+
+#
+PNG = setup.find_absolute_paths()[2]
+player.load_image(PNG)
+
 screen.set_alpha(None)
+event = pygame.event.poll()
 collision = True
+
 
 #Load the falling objects (obs)
 obs = []
@@ -95,4 +103,5 @@ def main_menu():
     screen.blit(score_text, [SIDE / 2 - 70, SIDE / 2 - 30])
     
     pygame.display.update()
+
 
