@@ -105,5 +105,3 @@ def main_menu():
     screen.blit(score_text, [SIDE / 2 - 70, SIDE / 2 - 30])
     
     pygame.display.update()
-
-
