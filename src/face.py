@@ -11,8 +11,8 @@ import argparse , time , cv2
 
 state = True
 
-MODEL_PATH = setup.find_absolute_paths()[0]
-ARCHITECTURE_PATH = setup.find_absolute_paths()[1]
+MODEL_PATH = ".\\model\\deploy.prototxt.txt"
+ARCHITECTURE_PATH = ".\\model\\weights.caffemodel"
 
 # Loading the model (which I took from the internet)
 # try until model is loaded

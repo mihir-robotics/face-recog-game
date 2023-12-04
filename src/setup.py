@@ -1,6 +1,6 @@
-# Simple code to find absolute paths of file w.r.t working dir.
-# Can be expanded to obtain game configuration as well, for other file paths etc
+# 4-Dec-2023 LATEST UPDATE: This is redundant but I'm still keeping it in the repo
 
+# Simple code to find absolute paths of file w.r.t working dir.
 # Import OS for req. functions
 import os
 
