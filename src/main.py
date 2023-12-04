@@ -94,6 +94,7 @@ def main():
         
         key = face.cv2.waitKey(1) & 0xFF
         if key == ord("q"):
+            game.pygame.quit()
             break
         game.clock.tick(100)
 

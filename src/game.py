@@ -10,22 +10,20 @@ from pygame.locals import *
 
 pygame.init()
 SIDE = 400
+GAME_TITLE = 'Face Recognition Game'
 STATE = True
 
 clock = pygame.time.Clock()
 
-screen = pygame.display.set_mode((SIDE,700),pygame.DOUBLEBUF)
-pygame.display.set_caption('The Face Game')
+screen = pygame.display.set_mode((SIDE,SIDE*2),pygame.DOUBLEBUF)
+pygame.display.set_caption(GAME_TITLE)
 
 # Store the score
 score = 0
 
 # Load the fonts
-
 font_30 = pygame.font.SysFont("Arial", 25, True, False)
 text_title = font_30.render("Face Gaem ", True, (255,255,255))
-
-#Defining player class and related functions
 
 #Defining some colors for convinience
 BLACK = (0, 0, 0)
@@ -36,6 +34,7 @@ RED = (255, 0, 0)
 CAR_COLOR = (181, 230, 29)
 TEXT_COLOR = (255, 255, 255)
 
+#Defining Sprite class and related functions; Needs refactoring
 class Sprite:
 
     def __init__(self, x=0, y=0, dx=4, dy=0, width=30, height=30, color=WHITE):
@@ -68,7 +67,7 @@ class Sprite:
         if self.x+self.width > 400 or self.x < 0:
             self.x -= self.dx
 
-# Collision code is checking collision against upper ledt corner of player hitbox (FIX THIS)
+# Collision code is checking collision against upper left corner of player hitbox (FIX THIS)
 def check_collision(player_x, player_y, player_width , player_height, car_x, car_y, car_width, car_height):
     if (player_x+player_width > car_x) and (player_x < car_x+car_width) and (player_y < car_y+car_height) and (player_y+player_height > car_y):
         return True
