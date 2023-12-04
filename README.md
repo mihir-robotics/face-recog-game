@@ -10,7 +10,7 @@ The project combines face detection using the DNN support provided by the `cv2` 
 ## Project Components
 
 - **Model Architecture**: The `deploy.prototxt.txt` file contains the architecture of the model used for face detection.
-- **Model Weights**: The `res10_300x300_ssd_iter_140000.caffemodel` file holds the weights for the actual model layers.
+- **Model Weights**: The `weights.caffemodel` file holds the weights for the actual model layers.
 - **Required Modules**:
   - OpenCV(cv2) for Python
   - NumPy
