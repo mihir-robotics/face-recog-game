@@ -13,6 +13,15 @@ SIDE = 400
 GAME_TITLE = 'Face Recognition Game'
 STATE = True
 
+#Defining some colors for convinience
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+GRAY = (159, 163, 168)
+GREEN = (0, 255, 0)
+RED = (255, 0, 0)
+CAR_COLOR = (181, 230, 29)
+TEXT_COLOR = (255, 255, 255)
+
 clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((SIDE,SIDE*2),pygame.DOUBLEBUF)
@@ -22,17 +31,12 @@ pygame.display.set_caption(GAME_TITLE)
 score = 0
 
 # Load the fonts
-font_30 = pygame.font.SysFont("Arial", 25, True, False)
-text_title = font_30.render("Face Gaem ", True, (255,255,255))
+font_30 = pygame.font.SysFont("Times New Roman", 25, True, False)
+text_title = font_30.render(GAME_TITLE, True, WHITE)
 
-#Defining some colors for convinience
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-GRAY = (159, 163, 168)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
-CAR_COLOR = (181, 230, 29)
-TEXT_COLOR = (255, 255, 255)
+screen.set_alpha(None)
+event = pygame.event.poll()
+collision = True
 
 #Defining Sprite class and related functions; Needs refactoring
 class Sprite:
@@ -83,10 +87,6 @@ try:
     player.load_image(PNG)
 except Exception:
     pass
-screen.set_alpha(None)
-event = pygame.event.poll()
-collision = True
-
 
 #Load the falling objects (obs)
 obs = []
@@ -97,10 +97,8 @@ for i in range(obs_count):
     obs.append(ob)
 
 #Define the game over and main menu screen
-
 def main_menu():
     screen.blit(text_title, [SIDE / 2 - 106, SIDE / 2 - 100])
     score_text = font_30.render(str(score), True, TEXT_COLOR)
     screen.blit(score_text, [SIDE / 2 - 70, SIDE / 2 - 30])
-    
     pygame.display.update()

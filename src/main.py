@@ -98,13 +98,10 @@ def main():
             break
         game.clock.tick(100)
 
-
-
     #-------- LINE  --------#
     
     # Clean up
     face.cleanup()
-
 
 if __name__ == "__main__":
     main()
