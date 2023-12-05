@@ -1,9 +1,8 @@
 # Pygame code
 # REFACTOR this
 
-#import the setup file to get absolute paths for ASSETS
-import setup
-import pygame , random
+import pygame
+import random
 from pygame.locals import *
 
 #Initialising pygame stuff
@@ -13,8 +12,9 @@ SIDE = 400
 GAME_TITLE = 'Face Recognition Game'
 STATE = True
 
-PLAYER_ASSET = ""
-OBJECT_ASSET = ""
+# PNG Assets for Player & Object
+PLAYER_ASSET = ".\\assets\\player.png"
+OBJECT_ASSET = ".\\assets\\object.png"
 
 #Defining some colors for convinience
 BLACK = (0, 0, 0)
@@ -86,8 +86,8 @@ player = Sprite(175,475,0,0,70,131,WHITE)
 
 #
 try:
-    PNG = setup.find_absolute_paths()[2]
-    player.load_image(PNG)
+    #PNG = setup.find_absolute_paths()[2]
+    player.load_image(PLAYER_ASSET)
 except Exception:
     pass
 
@@ -97,6 +97,7 @@ obs_count = 1      #Can be changed to increase difficulty
 for i in range(obs_count):
     x = random.randrange(0 , 340)
     ob = Sprite(x, random.randrange(-150, -50), 0, random.randint(5, 10), 30, 30,(0,255,0))
+    ob.load_image(OBJECT_ASSET)
     obs.append(ob)
 
 #Define the game over and main menu screen
