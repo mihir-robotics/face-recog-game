@@ -21,8 +21,6 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GRAY = (159, 163, 168)
 GREEN = (0, 255, 0)
-RED = (255, 0, 0)
-CAR_COLOR = (181, 230, 29)
 TEXT_COLOR = (255, 255, 255)
 
 clock = pygame.time.Clock()
@@ -82,22 +80,16 @@ def check_collision(player_x, player_y, player_width , player_height, car_x, car
         return False
 
 #Load the player sprite
-player = Sprite(175,475,0,0,70,131,WHITE)
-
-#
-try:
-    #PNG = setup.find_absolute_paths()[2]
-    player.load_image(PLAYER_ASSET)
-except Exception:
-    pass
+player = Sprite(175,475,0,0,70,131)
+player.load_image(PLAYER_ASSET)
 
 #Load the falling objects (obs)
 obs = []
-obs_count = 1      #Can be changed to increase difficulty
+obs_count = 1   #Can be changed to increase difficulty
 for i in range(obs_count):
     x = random.randrange(0 , 340)
-    ob = Sprite(x, random.randrange(-150, -50), 0, random.randint(5, 10), 30, 30,(0,255,0))
-    ob.load_image(OBJECT_ASSET)
+    ob = Sprite(x, random.randrange(-150, -50), 0, random.randint(5, 10), 30, 30)
+    ob.load_image(OBJECT_ASSET) # Not working?
     obs.append(ob)
 
 #Define the game over and main menu screen
