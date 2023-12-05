@@ -21,7 +21,7 @@ def main():
         face.net.setInput(blob)
         detections = face.net.forward()
 
-        event = game.pygame.event.poll()
+        event = game.getEvent()
         if event.type == game.pygame.QUIT:
             STATE = False
 
@@ -83,10 +83,7 @@ def main():
                     break
             
             # Draw the score
-            SCORESTRING = "Score: " + str(game.score)
-            txt_score = game.font_30.render(SCORESTRING, True, game.WHITE)
-            game.screen.blit(txt_score, [15,15])
-            game.pygame.display.update()
+            game.drawScore(game.score)
 
         else:
             game.main_menu()
@@ -95,7 +92,9 @@ def main():
         if key == ord("q"):
             game.pygame.quit()
             break
-        game.clock.tick(100)
+
+        # Set framerate; default is 100
+        game.setFrameRate()
     
     # Clean up
     face.cleanup()

@@ -18,11 +18,7 @@ OBJECT_ASSET = ".\\assets\\object.png"
 #Defining some colors for convinience
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-GRAY = (159, 163, 168)
-GREEN = (0, 255, 0)
-TEXT_COLOR = (255, 255, 255)
 
-clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((SIDE,SIDE*2),pygame.DOUBLEBUF)
 pygame.display.set_caption(GAME_TITLE)
@@ -35,11 +31,11 @@ font_30 = pygame.font.SysFont("Arial", 20, True, False)
 text_title = font_30.render(GAME_TITLE, True, WHITE)
 
 screen.set_alpha(None)
-event = pygame.event.poll()
+
 # Set collision default value
 collision = True
 
-#Defining Sprite class and related functions; Needs refactoring
+#Defining Sprite class and related functions
 class Sprite:
 
     def __init__(self, x=0, y=0, dx=4, dy=0, width=30, height=30, color=WHITE):
@@ -82,7 +78,7 @@ player.load_image(PLAYER_ASSET)
 
 #Load the falling objects (obs)
 obs = []
-obs_count = 1   #Can be changed to increase difficulty
+obs_count = 2   #Can be changed to increase difficulty
 for i in range(obs_count):
     x = random.randrange(0 , 340)
     ob = Sprite(x, random.randrange(-150, -50), 0, random.randint(5, 10), 30, 30)
@@ -92,6 +88,30 @@ for i in range(obs_count):
 #Define the game over and main menu screen
 def main_menu():
     screen.blit(text_title, [SIDE / 2 - 106, SIDE / 2 - 100])
-    score_text = font_30.render(str(score), True, TEXT_COLOR)
+    score_text = font_30.render(str(score), True, WHITE)
     screen.blit(score_text, [SIDE / 2 - 70, SIDE / 2 - 30])
+    pygame.display.update()
+
+# Get pygame event 
+def getEvent():
+    event = pygame.event.poll()
+    return event
+
+# Set frame-rate for the game
+def setFrameRate(fps = 100):
+    clock = pygame.time.Clock()
+    clock.tick(fps)
+
+# Set the score if objects cross y-threshold; player successfully dodged
+# Needs to be changed, doesnt fit rn
+def setScore(score, obj):
+    if obj.y > 500:
+        score += 1
+    return score
+
+# Draw the score
+def drawScore(score):
+    SCORESTRING = "Score: " + str(score)
+    txt_score = font_30.render(SCORESTRING, True, WHITE)
+    screen.blit(txt_score, [15,15])
     pygame.display.update()
