@@ -32,7 +32,7 @@ pygame.display.set_caption(GAME_TITLE)
 score = 0
 
 # Load the fonts
-font_30 = pygame.font.SysFont("Times New Roman", 25, True, False)
+font_30 = pygame.font.SysFont("Arial", 20, True, False)
 text_title = font_30.render(GAME_TITLE, True, WHITE)
 
 screen.set_alpha(None)
@@ -89,7 +89,7 @@ obs_count = 1   #Can be changed to increase difficulty
 for i in range(obs_count):
     x = random.randrange(0 , 340)
     ob = Sprite(x, random.randrange(-150, -50), 0, random.randint(5, 10), 30, 30)
-    ob.load_image(OBJECT_ASSET) # Not working?
+    ob.load_image(OBJECT_ASSET)
     obs.append(ob)
 
 #Define the game over and main menu screen

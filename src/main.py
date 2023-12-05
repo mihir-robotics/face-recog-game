@@ -68,7 +68,7 @@ def main():
 
             # Check if objects move out of screen
             for i in range(game.obs_count):
-                game.obs[i].draw_rect()
+                game.obs[i].draw_image()
                 game.obs[i].y += 25
                 if game.obs[i].y > 500:
                     game.score += 1
