@@ -61,9 +61,8 @@ def main():
         # Drawing Code 
         game.screen.fill((0,0,0))
         if not game.collision:
-            game.player.draw_image()
-            game.player.move_x()
-            game.player.check_out_of_screen()
+            # Start/ Draw player
+            game.startPlayer(game.collision)
 
             # Check if objects move out of screen
             for i in range(game.obs_count):
@@ -75,7 +74,7 @@ def main():
                     game.obs[i].x = random.randrange(0, 340)
                     game.obs[i].dy = random.randint(4, 9)        
 
-            #
+            # Checks collision for each object
             for i in range(game.obs_count):
                 if game.check_collision(game.player.x, game.player.y, 30, 30, game.obs[i].x, game.obs[i].y, game.obs[i].width, game.obs[i].height):
                     game.collision = True

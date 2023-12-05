@@ -78,7 +78,7 @@ player.load_image(PLAYER_ASSET)
 
 #Load the falling objects (obs)
 obs = []
-obs_count = 2   #Can be changed to increase difficulty
+obs_count = 1   #Can be changed to increase difficulty
 for i in range(obs_count):
     x = random.randrange(0 , 340)
     ob = Sprite(x, random.randrange(-150, -50), 0, random.randint(5, 10), 30, 30)
@@ -115,3 +115,10 @@ def drawScore(score):
     txt_score = font_30.render(SCORESTRING, True, WHITE)
     screen.blit(txt_score, [15,15])
     pygame.display.update()
+
+# Start the player sprite, if collsion is not True
+def startPlayer(collision):
+    if collision is False:
+        player.draw_image()
+        player.move_x()
+        player.check_out_of_screen()
