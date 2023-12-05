@@ -13,6 +13,9 @@ SIDE = 400
 GAME_TITLE = 'Face Recognition Game'
 STATE = True
 
+PLAYER_ASSET = ""
+OBJECT_ASSET = ""
+
 #Defining some colors for convinience
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
