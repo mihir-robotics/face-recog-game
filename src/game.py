@@ -6,7 +6,6 @@ import random
 from pygame.locals import *
 
 #Initialising pygame stuff
-
 pygame.init()
 SIDE = 400
 GAME_TITLE = 'Face Recognition Game'
@@ -37,6 +36,7 @@ text_title = font_30.render(GAME_TITLE, True, WHITE)
 
 screen.set_alpha(None)
 event = pygame.event.poll()
+# Set collision default value
 collision = True
 
 #Defining Sprite class and related functions; Needs refactoring
@@ -65,11 +65,8 @@ class Sprite:
     def move_y(self):
         self.y += self.dy
 
-    def draw_rect(self):
-        pygame.draw.rect(screen, self.color, [self.x, self.y, self.width, self.height], 0)
-
     def check_out_of_screen(self):
-        if self.x+self.width > 400 or self.x < 0:
+        if self.x+self.width > SIDE or self.x < 0:
             self.x -= self.dx
 
 # Collision code is checking collision against upper left corner of player hitbox (FIX THIS)
@@ -80,7 +77,7 @@ def check_collision(player_x, player_y, player_width , player_height, car_x, car
         return False
 
 #Load the player sprite
-player = Sprite(175,475,0,0,70,131)
+player = Sprite(175,450,0,0,70,131)
 player.load_image(PLAYER_ASSET)
 
 #Load the falling objects (obs)

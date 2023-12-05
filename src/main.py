@@ -1,5 +1,4 @@
 # Main
-
 '''
 This should only contain the local imports (face, game).
 Everything in 'while STATE...' shouldbe converted into methods/routines in their own respective files.
@@ -50,14 +49,14 @@ def main():
             box = detections[0,0,i,3:7] * face.np.array([w,h,w,h])
             (startX,startY,endX,endY) = box.astype("int")
 
-            text = "Face Window"
+            text = "Face"
             y = startY - 10 if startY - 10 > 10 else startY + 10
             face.cv2.rectangle(frame, (startX, startY), (endX, endY),
                         (0, 0, 255), 2)
             face.cv2.putText(frame, text, (startX, y),
                         face.cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
         
-        face.cv2.imshow("Face", frame)
+        face.cv2.imshow("", frame)
 
         # Drawing Code 
         game.screen.fill((0,0,0))
@@ -97,8 +96,6 @@ def main():
             game.pygame.quit()
             break
         game.clock.tick(100)
-
-    #-------- LINE  --------#
     
     # Clean up
     face.cleanup()
