@@ -1,9 +1,30 @@
-# Pygame code
-# REFACTOR this
+'''
+Script handles the Game code modules and functions
+#. Modules:
+-   Pygame
+-   Random
 
+#. Objects:
+-   player  (Player Sprite Object)
+-   ob      (Object Sprite)
+-   screen  (Pygame Display Object)
+
+#. Functions
+-   check_collision():  Check if object collided with player
+-   main_menu():        Load the game's main menu; effective restart
+-   getEvent():         Get the pygame.event object
+-   setFrameRate():     Set the game framerate, using clock.tick()
+-   checkObj():         Check if objects go below threshold, change score acc.
+-   drawObj():          Draw the meteor object
+-   drawScore():        Draw the game score
+-   startPlayer():      Init. the player sprite
+-   startGame():        Init. the game
+'''
+
+# Import req. modules
 import pygame
-import random
 from pygame.locals import *
+import random
 
 #Initialising pygame stuff
 pygame.init()
