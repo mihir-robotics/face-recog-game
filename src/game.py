@@ -102,11 +102,25 @@ def setFrameRate(fps = 100):
     clock = pygame.time.Clock()
     clock.tick(fps)
 
-# Set the score if objects cross y-threshold; player successfully dodged
-# Needs to be changed, doesnt fit rn
-def setScore(score, obj):
-    if obj.y > 500:
+# Check if objects move outside of the screen; if yes -> increase score +1
+def checkObj(ob, score):
+    if ob.y > 500:
         score += 1
+        ob.y = random.randrange(-150, -50)
+        ob.x = random.randrange(0, 340)
+        ob.dy = random.randrange(4, 9)
+    
+    return score
+    
+
+# Draw the object
+def drawObj(obs, obs_count, score):
+    for i in range(obs_count):
+        obs[i].draw_image()
+        obs[i].y += 25
+
+        score = checkObj(obs[i], score)
+    
     return score
 
 # Draw the score

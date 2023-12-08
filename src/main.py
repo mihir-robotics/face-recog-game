@@ -59,21 +59,15 @@ def main():
         face.cv2.imshow("", frame)
 
         # Drawing Code 
-        game.screen.fill((0,0,0))
+        game.screen.fill(game.BLACK)
+        
         if not game.collision:
             # Start/ Draw player
             game.startPlayer(game.collision)
 
-            # Check if objects move out of screen
-            for i in range(game.obs_count):
-                game.obs[i].draw_image()
-                game.obs[i].y += 25
-                if game.obs[i].y > 500:
-                    game.score += 1
-                    game.obs[i].y = random.randrange(-150,-50)
-                    game.obs[i].x = random.randrange(0, 340)
-                    game.obs[i].dy = random.randint(4, 9)        
-
+            # Draw the objects and update the score
+            game.score = game.drawObj(game.obs, game.obs_count, game.score)
+       
             # Checks collision for each object
             for i in range(game.obs_count):
                 if game.check_collision(game.player.x, game.player.y, 30, 30, game.obs[i].x, game.obs[i].y, game.obs[i].width, game.obs[i].height):
