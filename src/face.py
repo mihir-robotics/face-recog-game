@@ -45,6 +45,24 @@ def getFaceDetections(window_size):
     # Temporary returns, will change after drawFace()
     return face_detections, height, width, frame
 
+# Draw Face on video stream, get X,y etc
+def drawFace(face_detections, height, width, frame):
+    startX, startY, endX, endY = 0 , 0, 0, 0
+    for i in range(face_detections.shape[2]):
+        confidence = face_detections[0, 0, i, 2]
+
+        if confidence < 0.7:
+            continue
+
+        box =  face_detections[0,0,i,3:7] * np.array([width, height, width, height])
+        (startX, startY, endX, endY) = box.astype('int')
+
+        y = startY - 10 if startY - 10 > 10 else startY + 10
+        cv2.rectangle(frame, (startX, startY), (endX, endY), (0, 0, 255), 2)
+        
+    cv2.imshow('', frame)
+    return startX, startY, endX, endY
+
 
 # Clean-up routine to close all windows
 def cleanup():

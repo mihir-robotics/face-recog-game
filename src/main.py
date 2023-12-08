@@ -12,20 +12,13 @@ from game import random as random
 def main():
     game.STATE = True
     while game.STATE:    # too long.. convert this into just routine calls to imports instead of if, for etc.
-        '''
-        frame = face.vs.read()
-        frame = face.imutils.resize(frame, width= game.SIDE, height = game.SIDE)
-        # Convert frame to a blob
-        (h, w) = frame.shape[:2]
-        blob = face.cv2.dnn.blobFromImage(face.cv2.resize(frame, (300, 300)), 1.0, (300, 300), (103.93, 116.77, 123.68))
 
-        face.net.setInput(blob)
-        '''
+        # Obtain face detection from video stream
         detections, h, w, frame = face.getFaceDetections(game.SIDE)
 
         event = game.getEvent()
         if event.type == game.pygame.QUIT:
-            STATE = False
+            game.STATE = False
 
         # Start the game
         if game.collision and event.type == game.pygame.MOUSEBUTTONDOWN:
@@ -41,24 +34,8 @@ def main():
         if not game.collision:
             game.player.x = game.SIDE - ((startX+10)*2)
         
-        for i in range(0,detections.shape[2]):
-
-            confidence = detections[0 , 0 , i , 2]
-
-            if confidence < 0.7:
-                continue
-
-            box = detections[0,0,i,3:7] * face.np.array([w,h,w,h])
-            (startX,startY,endX,endY) = box.astype("int")
-
-            text = "Face"
-            y = startY - 10 if startY - 10 > 10 else startY + 10
-            face.cv2.rectangle(frame, (startX, startY), (endX, endY),
-                        (0, 0, 255), 2)
-            face.cv2.putText(frame, text, (startX, y),
-                        face.cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
-        
-        face.cv2.imshow("", frame)
+        # Draw face rectangle, get co-ords of the box
+        startX, startY, endX, endY = face.drawFace(detections, h, w, frame)
 
         # Drawing Code 
         game.screen.fill(game.BLACK)
