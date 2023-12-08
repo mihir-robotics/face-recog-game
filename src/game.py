@@ -112,7 +112,6 @@ def checkObj(ob, score):
     
     return score
     
-
 # Draw the object
 def drawObj(obs, obs_count, score):
     for i in range(obs_count):

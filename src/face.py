@@ -28,6 +28,24 @@ vs = VideoStream(src=0).start()
 # Delay
 time.sleep(2)
 
+# get face feed
+def getFaceDetections(window_size):
+    
+    frame = vs.read()
+    frame = imutils.resize(frame, width= window_size, height = window_size)
+
+    height, width = frame.shape[:2]
+
+    # Convert frame to a blob
+    blob = cv2.dnn.blobFromImage(cv2.resize(frame, (300, 300)), 1.0, (300, 300), (103.93, 116.77, 123.68))
+    net.setInput(blob)
+
+    face_detections = net.forward()
+
+    # Temporary returns, will change after drawFace()
+    return face_detections, height, width, frame
+
+
 # Clean-up routine to close all windows
 def cleanup():
     cv2.destroyAllWindows()

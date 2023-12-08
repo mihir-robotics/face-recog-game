@@ -12,6 +12,7 @@ from game import random as random
 def main():
     game.STATE = True
     while game.STATE:    # too long.. convert this into just routine calls to imports instead of if, for etc.
+        '''
         frame = face.vs.read()
         frame = face.imutils.resize(frame, width= game.SIDE, height = game.SIDE)
         # Convert frame to a blob
@@ -19,7 +20,8 @@ def main():
         blob = face.cv2.dnn.blobFromImage(face.cv2.resize(frame, (300, 300)), 1.0, (300, 300), (103.93, 116.77, 123.68))
 
         face.net.setInput(blob)
-        detections = face.net.forward()
+        '''
+        detections, h, w, frame = face.getFaceDetections(game.SIDE)
 
         event = game.getEvent()
         if event.type == game.pygame.QUIT:
@@ -60,7 +62,7 @@ def main():
 
         # Drawing Code 
         game.screen.fill(game.BLACK)
-        
+
         if not game.collision:
             # Start/ Draw player
             game.startPlayer(game.collision)
