@@ -1,12 +1,8 @@
 # Main
-'''
-This should only contain the local imports (face, game).
-Everything in 'while STATE...' shouldbe converted into methods/routines in their own respective files.
-'''
 
 import face
 import game
-from game import random as random
+
 
 # Main()
 def main():
@@ -23,14 +19,9 @@ def main():
         # Start the game
         if game.collision and event.type == game.pygame.MOUSEBUTTONDOWN:
             game.collision = False
-            for i in range(game.obs_count):
-                game.obs[i].y = game.random.randrange(-150,50)
-                game.obs[i].x = game.random.randrange(0,350)
-            game.player.x = 175
-            game.player.dx = 0
-            game.score = 0
-            game.pygame.mouse.set_visible(False)
-
+            #
+            game.player.x , game.player.dx, game.score = game.startGame(game.obs, game.obs_count, game.SIDE)
+            
         if not game.collision:
             game.player.x = game.SIDE - ((startX+10)*2)
         

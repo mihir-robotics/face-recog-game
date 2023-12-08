@@ -19,7 +19,6 @@ OBJECT_ASSET = ".\\assets\\object.png"
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-
 screen = pygame.display.set_mode((SIDE,SIDE*2),pygame.DOUBLEBUF)
 pygame.display.set_caption(GAME_TITLE)
 
@@ -135,3 +134,17 @@ def startPlayer(collision):
         player.draw_image()
         player.move_x()
         player.check_out_of_screen()
+
+# Initialise Game
+def startGame(obs, obs_count, side):
+    
+    for i in range(obs_count):
+        obs[i].y = random.randrange(-150, 50)
+        obs[i].x = random.randrange(0, 350)
+    
+    player_x = side//2 - 25
+    player_dx = 0
+    game_score = 0
+    pygame.mouse.set_visible(False)
+    
+    return player_x, player_dx, game_score
