@@ -3,7 +3,6 @@
 import face
 import game
 
-
 # Main()
 def main():
     game.STATE = True
@@ -29,7 +28,7 @@ def main():
         startX, startY, endX, endY = face.drawFace(detections, h, w, frame)
 
         # Drawing Code 
-        game.screen.fill(game.BLACK)
+        game.screen.blit(game.background_img, (0,0))
 
         if not game.collision:
             # Start/ Draw player

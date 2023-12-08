@@ -1,31 +1,46 @@
-# Face recognition code
-# NEEDS TO BE REFACTORED
-# Need to find way to optimize facial detection to reduce lag (multithread maybe?)
+''' 
+Script handles the Face recognition libraries and functions
+#. Modules:
+-   Imutils
+-   Numpy
+-   OpenCV (cv2)
+-   Time
 
+#. Objects:
+-   vs  (Video Stream Object)
+
+#. Functions:
+-   getFaceDetections():    Get frame and face detection from blob
+-   drawFace():             Draw rectangle in cv2 window
+-   cleanup():              Destroy cv2 window upon key-press
+'''
+
+# Import req. modules
+import cv2
 import imutils
 from imutils.video import VideoStream
 import numpy as np
 import time 
-import cv2
 
 # File paths for Model and Weights
 MODEL_PATH = ".\\model\\deploy.prototxt.txt"
 ARCHITECTURE_PATH = ".\\model\\weights.caffemodel"
 
-state = True
+# Variable to check if files are loaded; True -> not loaded
+loadState = True
 
 # Load the model, weight files, throw error if file path cannot be reolved
-while state:
+while loadState:
     try:
         # Load network from files
         net = cv2.dnn.readNetFromCaffe(MODEL_PATH, ARCHITECTURE_PATH)
-        state = False
+        loadState = False
     except Exception:
         print('Error: Files not found')
 
-#Initialise the Video Stream 
+#Initialise the Video Stream object 
 vs = VideoStream(src=0).start()
-# Delay
+# Time Delay
 time.sleep(2)
 
 # get face feed

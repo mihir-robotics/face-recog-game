@@ -14,6 +14,7 @@ STATE = True
 # PNG Assets for Player & Object
 PLAYER_ASSET = ".\\assets\\player.png"
 OBJECT_ASSET = ".\\assets\\object.png"
+BACKGROUND = ".\\assets\\background.png"
 
 #Defining some colors for convinience
 BLACK = (0, 0, 0)
@@ -21,6 +22,9 @@ WHITE = (255, 255, 255)
 
 screen = pygame.display.set_mode((SIDE,SIDE*2),pygame.DOUBLEBUF)
 pygame.display.set_caption(GAME_TITLE)
+
+# Load background image
+background_img = pygame.image.load(BACKGROUND).convert()
 
 # Store the score
 score = 0
