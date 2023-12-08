@@ -1,5 +1,15 @@
-# Main
+''' 
+Main()
 
+#. Modules:
+-   face (Local module)
+-   game (Local module)
+
+#. Function:
+-   main():     Run the game & face functions.
+'''
+
+# Import the req. modules
 import face
 import game
 

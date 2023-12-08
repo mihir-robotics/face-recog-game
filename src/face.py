@@ -26,17 +26,8 @@ import time
 MODEL_PATH = ".\\model\\deploy.prototxt.txt"
 ARCHITECTURE_PATH = ".\\model\\weights.caffemodel"
 
-# Variable to check if files are loaded; True -> not loaded
-loadState = True
-
-# Load the model, weight files, throw error if file path cannot be reolved
-while loadState:
-    try:
-        # Load network from files
-        net = cv2.dnn.readNetFromCaffe(MODEL_PATH, ARCHITECTURE_PATH)
-        loadState = False
-    except Exception:
-        print('Error: Files not found')
+# Load the model, weight files
+net = cv2.dnn.readNetFromCaffe(MODEL_PATH, ARCHITECTURE_PATH)
 
 #Initialise the Video Stream object 
 vs = VideoStream(src=0).start()
