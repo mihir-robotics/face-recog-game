@@ -20,27 +20,34 @@ Script handles the Game code modules and functions
 -   startPlayer():      Init. the player sprite
 -   startGame():        Init. the game
 '''
-
 # Import req. modules
 import pygame
 from pygame.locals import *
+
+# For object creation randomness
 import random
 
-#Initialising pygame stuff
+#Initialising pygame
 pygame.init()
+
+# Window Size
 SIDE = 400
+
+# Game Title
 GAME_TITLE = 'Face Recognition Game'
+# Game State
 STATE = True
 
 # PNG Assets for Player & Object
 PLAYER_ASSET = ".\\assets\\player.png"
 OBJECT_ASSET = ".\\assets\\object.png"
-BACKGROUND = ".\\assets\\background.png"
+BACKGROUND   = ".\\assets\\background.png"
 
-#Defining some colors for convinience
+# Defining some colors for convinience
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
+# Define screen for game
 screen = pygame.display.set_mode((SIDE,SIDE*2),pygame.DOUBLEBUF)
 pygame.display.set_caption(GAME_TITLE)
 
@@ -50,17 +57,22 @@ background_img = pygame.image.load(BACKGROUND).convert()
 # Store the score
 score = 0
 
-# Load the fonts
+# Load the fonts, set title
 font_30 = pygame.font.SysFont("Arial", 20, True, False)
 text_title = font_30.render(GAME_TITLE, True, WHITE)
 
+# Set alpha value for screen
 screen.set_alpha(None)
 
 # Set collision default value
 collision = True
 
-#Defining Sprite class and related functions
+# Defining Sprite class and related functions
 class Sprite:
+    '''
+    Class to define player and object properties.
+
+    '''
 
     def __init__(self, x=0, y=0, dx=4, dy=0, width=30, height=30, color=WHITE):
         self.image = ""
