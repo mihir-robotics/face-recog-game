@@ -15,23 +15,27 @@ import game
 
 # Main()
 def main():
+    # Set game state; if not True then stop/exit the game
     game.STATE = True
-    while game.STATE:    # too long.. convert this into just routine calls to imports instead of if, for etc.
+    while game.STATE:
 
         # Obtain face detection from video stream
         detections, h, w, frame = face.getFaceDetections(game.SIDE)
 
+        # Get pygame event
         event = game.getEvent()
+        # Quit game if pygame window is closed
         if event.type == game.pygame.QUIT:
             game.STATE = False
 
         # Start the game
         if game.collision and event.type == game.pygame.MOUSEBUTTONDOWN:
             game.collision = False
-            #
+            # Init. the player stats
             game.player.x , game.player.dx, game.score = game.startGame(game.obs, game.obs_count, game.SIDE)
             
         if not game.collision:
+            # Move player character
             game.player.x = game.SIDE - ((startX+10)*2)
         
         # Draw face rectangle, get co-ords of the box
@@ -58,8 +62,10 @@ def main():
             game.drawScore(game.score)
 
         else:
+            # Load main menu
             game.main_menu()
         
+        # If 'q' is pressed, quit the game
         key = face.cv2.waitKey(1) & 0xFF
         if key == ord("q"):
             game.pygame.quit()
