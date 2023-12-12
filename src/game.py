@@ -102,7 +102,7 @@ player.load_image(PLAYER_ASSET)
 
 #Load the falling objects (obs)
 obs = []
-obs_count = 1   #Can be changed to increase difficulty
+obs_count = 2   #Can be changed to increase difficulty
 for i in range(obs_count):
     x = random.randrange(0 , 340)
     ob = Sprite(x, random.randrange(-150, -50), 0, random.randint(5, 10), 30, 30)
@@ -122,7 +122,7 @@ def getEvent():
     return event
 
 # Set frame-rate for the game
-def setFrameRate(fps = 100):
+def setFrameRate(fps = 120):
     clock = pygame.time.Clock()
     clock.tick(fps)
 
