@@ -116,21 +116,30 @@ class Sprite:
         screen.blit(self.image, [self.x, self.y])
 
     def move_x(self):
+        '''
+        Move the sprite horizontally
+        '''
         self.x += self.dx
 
     def move_y(self):
+        '''
+        Move the sprite vertically
+        '''
         self.y += self.dy
 
     def check_out_of_screen(self):
+        '''
+        Check if sprite is out of screen and adjust the position acc.
+        '''
         if self.x+self.width > SIDE or self.x < 0:
             self.x -= self.dx
 
 # Collision code is checking collision against upper left corner of player hitbox (FIX THIS)
 def check_collision(player_x, player_y, player_width , player_height, car_x, car_y, car_width, car_height):
+    collisionState = False
     if (player_x+player_width > car_x) and (player_x < car_x+car_width) and (player_y < car_y+car_height) and (player_y+player_height > car_y):
-        return True
-    else:
-        return False
+        collisionState = True
+    return collision
 
 #Load the player sprite
 player = Sprite(175,450,0,0,70,131)
