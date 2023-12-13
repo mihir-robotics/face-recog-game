@@ -72,8 +72,23 @@ class Sprite:
     '''
     Class to define player and object properties.
 
-    '''
+    Attributes:
+        x (int): Horizontal position of the sprite.
+        y (int): Vertical position of the sprite.
+        dx (int): Horizontal velocity of the sprite.
+        dy (int): Vertical velocity of the sprite.
+        width (int): Width of the sprite.
+        height (int): Height of the sprite.
+        color (tuple): Color of the sprite (RGB tuple).
 
+    Methods:
+        load_image(img): Loads an image for the sprite.
+        draw_image(): Draws the sprite on the screen.
+        move_x(): Moves the sprite horizontally.
+        move_y(): Moves the sprite vertically.
+        check_out_of_screen(): Checks if the sprite is out of the screen boundaries and adjusts its position accordingly.
+    '''
+    # Init. function
     def __init__(self, x=0, y=0, dx=4, dy=0, width=30, height=30, color=WHITE):
         self.image = ""
         self.x = x
@@ -85,10 +100,19 @@ class Sprite:
         self.color = color
 
     def load_image(self, img):
+        '''
+        Loads an image for the sprite.
+
+        Args:
+        img (str): File path of the image.
+        '''
         self.image = pygame.image.load(img).convert()
         self.image.set_colorkey(BLACK)
 
     def draw_image(self):
+        '''
+        Draw the sprite on the screen
+        '''
         screen.blit(self.image, [self.x, self.y])
 
     def move_x(self):
