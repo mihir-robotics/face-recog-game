@@ -136,10 +136,26 @@ class Sprite:
 
 # Collision code is checking collision against upper left corner of player hitbox (FIX THIS)
 def check_collision(player_x, player_y, player_width , player_height, car_x, car_y, car_width, car_height):
+    '''
+    Checks collision between player and object.
+
+    Args:
+        player_x (int): X-coordinate of the player.
+        player_y (int): Y-coordinate of the player.
+        player_width (int): Width of the player.
+        player_height (int): Height of the player.
+        car_x (int): X-coordinate of the object to be checked for collision.
+        car_y (int): Y-coordinate of the object to be checked for collision.
+        car_width (int): Width of the object to be checked for collision.
+        car_height (int): Height of the object to be checked for collision.
+
+    Returns:
+        collisionState: True if collision occurs, False otherwise.
+    '''
     collisionState = False
     if (player_x+player_width > car_x) and (player_x < car_x+car_width) and (player_y < car_y+car_height) and (player_y+player_height > car_y):
         collisionState = True
-    return collision
+    return collisionState
 
 #Load the player sprite
 player = Sprite(175,450,0,0,70,131)
