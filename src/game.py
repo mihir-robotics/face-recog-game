@@ -230,7 +230,7 @@ def checkObj(ob, score):
     return score
     
 # Draw the object
-def drawObj(obs, obs_count, score):
+def drawObj(obs, score):
     '''
     Draws the specified asset for given object on game screen.
 
@@ -239,7 +239,8 @@ def drawObj(obs, obs_count, score):
     -   obs_count (int): No. of total objects
     -   score (int):    In-game score
     '''
-    for i in range(obs_count):  # This is redundant, change it later
+    
+    for i in range(len(obs)):
         obs[i].draw_image()
         obs[i].y += 25
 
@@ -266,9 +267,9 @@ def startPlayer(collision):
         player.check_out_of_screen()
 
 # Initialise Game
-def startGame(obs, obs_count, side):
+def startGame(obs, side):
     
-    for i in range(obs_count):
+    for i in range(len(obs)):
         obs[i].y = random.randrange(-150, 50)
         obs[i].x = random.randrange(0, 350)
     

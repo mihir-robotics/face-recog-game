@@ -32,7 +32,7 @@ def main():
         if game.collision and event.type == game.pygame.MOUSEBUTTONDOWN:
             game.collision = False
             # Init. the player stats
-            game.player.x , game.player.dx, game.score = game.startGame(game.obs, game.obs_count, game.SIDE)
+            game.player.x , game.player.dx, game.score = game.startGame(game.obs, game.SIDE)
             
         if not game.collision:
             # Move player character
@@ -49,7 +49,7 @@ def main():
             game.startPlayer(game.collision)
 
             # Draw the objects and update the score
-            game.score = game.drawObj(game.obs, game.obs_count, game.score)
+            game.score = game.drawObj(game.obs, game.score)
        
             # Checks collision for each object
             for i in range(game.obs_count):
