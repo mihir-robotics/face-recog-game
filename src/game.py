@@ -232,18 +232,27 @@ def checkObj(ob, score):
 # Draw the object
 def drawObj(obs, obs_count, score):
     '''
-    Draws the specified asset for given object on game screen
+    Draws the specified asset for given object on game screen.
+
+    Params:
+    -   obs (list): List of Sprite objects to be drawn
+    -   obs_count (int): No. of total objects
+    -   score (int):    In-game score
     '''
-    for i in range(obs_count):
+    for i in range(obs_count):  # This is redundant, change it later
         obs[i].draw_image()
         obs[i].y += 25
 
+        # Check if objects have crossed the y threhold; for spawning/despawning
         score = checkObj(obs[i], score)
     
     return score
 
 # Draw the score
 def drawScore(score):
+    '''
+    Draw the in-game score on screen
+    '''
     SCORESTRING = "Score: " + str(score)
     txt_score = font_30.render(SCORESTRING, True, WHITE)
     screen.blit(txt_score, [15,15])
