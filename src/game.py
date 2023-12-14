@@ -261,9 +261,18 @@ def drawScore(score):
 
 # Start the player sprite, if collsion is not True
 def startPlayer(collision):
+    '''
+    Init./Reset the player sprite attributes
+
+    Params:
+    -   collision (bool):   Collision value, True if collided
+    '''
     if collision is False:
+        # Draw Player asset
         player.draw_image()
+        # Move as per the face inputs
         player.move_x()
+        # Check if player sprite is out of bounds
         player.check_out_of_screen()
 
 # Initialise Game
