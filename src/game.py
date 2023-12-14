@@ -196,12 +196,32 @@ def getEvent():
 
 # Set frame-rate for the game
 def setFrameRate(fps = 120):
+    '''
+    Set framerate for the game using tick().
+
+    Params:
+    -   fps (int): Frames per second; default value is 120
+    '''
+    # Init. clock object
     clock = pygame.time.Clock()
     clock.tick(fps)
 
 # Check if objects move outside of the screen; if yes -> increase score +1
 def checkObj(ob, score):
-    if ob.y > 500:
+    '''
+    Check if objects are out of bounds; update score accordingly
+
+    Params:
+    -   ob:     Sprite object for object to be checked
+    -   score (int):   Current game score; to be updated
+
+    Returns:
+    -   score: Updated game score
+    '''
+    # Set y threshold
+    threshold = 500
+    # If object crosses the threshold, respawn it acc.
+    if ob.y > threshold:
         score += 1
         ob.y = random.randrange(-150, -50)
         ob.x = random.randrange(0, 340)
@@ -211,6 +231,9 @@ def checkObj(ob, score):
     
 # Draw the object
 def drawObj(obs, obs_count, score):
+    '''
+    Draws the specified asset for given object on game screen
+    '''
     for i in range(obs_count):
         obs[i].draw_image()
         obs[i].y += 25
