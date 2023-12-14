@@ -277,14 +277,28 @@ def startPlayer(collision):
 
 # Initialise Game
 def startGame(obs, side):
-    
+    '''
+    Init. the game attributes and variables
+
+    Params:
+    -   obs:    List of Sprite objects
+    -   side:   Length of pygame window
+
+    Returns:
+    -   player_x:   Player sprite X-axis location
+    -   player_dx:  Player sprite offset value on X-axis
+    -   game_score: In-game score
+    '''
+    # Spawn the objects
     for i in range(len(obs)):
         obs[i].y = random.randrange(-150, 50)
         obs[i].x = random.randrange(0, 350)
     
+    # Spawn the player sprite
     player_x = side//2 - 25
     player_dx = 0
     game_score = 0
     pygame.mouse.set_visible(False)
     
+    # Return game variables
     return player_x, player_dx, game_score
