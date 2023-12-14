@@ -166,12 +166,18 @@ obs = []
 obs_count = 2   #Can be changed to increase difficulty
 for i in range(obs_count):
     x = random.randrange(0 , 340)
+    # Init. object randomly within X-axis
     ob = Sprite(x, random.randrange(-150, -50), 0, random.randint(5, 10), 30, 30)
+    # Load object asset
     ob.load_image(OBJECT_ASSET)
+    # Add to list of objects to be spawned
     obs.append(ob)
 
 #Define the game over and main menu screen
 def main_menu():
+    '''
+    Draw the main menu/ game over screen of the game
+    '''
     screen.blit(text_title, [SIDE / 2 - 106, SIDE / 2 - 100])
     score_text = font_30.render(str(score), True, WHITE)
     screen.blit(score_text, [SIDE / 2 - 70, SIDE / 2 - 30])
@@ -179,6 +185,12 @@ def main_menu():
 
 # Get pygame event 
 def getEvent():
+    '''
+    Get the current pygame event through pygame.poll()
+
+    Returns:
+    - event:    Pygame event object
+    '''
     event = pygame.event.poll()
     return event
 
